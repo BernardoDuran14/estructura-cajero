@@ -1,7 +1,9 @@
 package bo.edu.ucb.est;
 
 
-import javax.swing.JOptionPane;
+import java.util.Scanner;
+
+
 
 /**
  * Hello world!
@@ -11,7 +13,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        
+        Scanner entrada = new Scanner(System.in);
         Cuenta juan1 = new Cuenta(1,"Juan Perez","jperez","Bolivianos","Caja de Ahorros",12000,111122,3333);
         Cuenta juan2 = new Cuenta(2,"Juan Perez","jperez","USD","Cuenta Corriente",100,112211,3333);
         Cuenta maria = new Cuenta(1,"Maria Gomez","mgomez","Bolivianos","Caja de Ahorros",0,221122,4444);
@@ -21,30 +23,45 @@ public class App
         
         try{
         
-            String codC = JOptionPane.showInputDialog("Ingrese el codigo de cuenta :");
-            int pin = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el pin de la cuenta :"));
+        	
+        	String codC = "";	
+            int pin;
+        	System.out.println("Ingrese el codigo de cuenta :");
+        	codC = entrada.next();
+        	System.out.println("Ingrese el pin de la cuenta :");
+        	pin =entrada.nextInt();
         
             String perez = "jperez";
             String mari = "mgomez";
             String carlos = "cgomez";
             
         if(codC.equals("jperez")&&pin==3333){
-            int opcion=Integer.parseInt(JOptionPane.showInputDialog(null, "MENÚ DE OPCIONES\n\n 1.Ver saldo\n 2.Retirar\n 3.Depositar\n 4.Salir"));
-            int cta=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cuenta entre 1-2: "));
+        	boolean salir = false;
+            int opcion1;
+            int opcion=0;
+            while(opcion!=4) {
+            	
+            	System.out.println("\n\nMENÚ DE OPCIONES\n\n 1.Ver saldo\n 2.Retirar\n 3.Depositar\n 4.Salir");
+                opcion= entrada.nextInt();
+                
 
         switch (opcion){
             case 1:
+            	int cta;
+                System.out.println("Ingrese la cuenta entre 1-2: ");
+                cta = entrada.nextInt();
                 if(cta==1){
                     juan1.mostrarDatos();
                 }else if(cta==2){
                     juan2.mostrarDatos();
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "No tiene esa cuenta.");
+                	System.out.println("No tiene esa cuenta.");
                 }
                 break;
             case 2:
-                
+                System.out.println("Ingrese la cuenta entre 1-2: ");
+                cta = entrada.nextInt();
                 if(cta==1){
                     juan1.retirarBol();
                 }else if(cta==2){
@@ -52,7 +69,8 @@ public class App
                 }
                 break;
             case 3:
-                
+                System.out.println("Ingrese la cuenta entre 1-2: ");
+                cta = entrada.nextInt();
                 if(cta==1){
                     juan1.depositarBol();
                 }else if(cta==2){
@@ -60,15 +78,20 @@ public class App
                 }
                 break;
             case 4:
-                JOptionPane.showMessageDialog(null, "Salir");
+            	System.out.println("Salió");
                 break;
             default:
-                JOptionPane.showMessageDialog(null, "Opcion Incorrecta");
+            	System.out.println("Opcion Incorrecta");
                 break;
         }
+        }
         }else if(codC.equals("mgomez")&&pin==4444){
-            int opcion=Integer.parseInt(JOptionPane.showInputDialog(null, "MENÚ DE OPCIONES\n\n 1.Ver saldo\n 2.Retirar\n 3.Depositar\n 4.Salir"));
-
+        	boolean salir = false;
+            int opcion1;
+            int opcion=0;
+            while(opcion!=4) {
+            	System.out.println("\n\nMENÚ DE OPCIONES\n\n 1.Ver saldo\n 2.Retirar\n 3.Depositar\n 4.Salir");
+                opcion= entrada.nextInt();
         switch (opcion){
             case 1:
                 
@@ -90,20 +113,28 @@ public class App
                 
                 break;
             case 4:
-                JOptionPane.showMessageDialog(null, "Salir");
+            	System.out.println("Salió");
                 break;
             default:
-                JOptionPane.showMessageDialog(null, "Opcion Incorrecta");
+            	System.out.println("Opcion Incorrecta");
                 break;
+        }
         }
         }
         else if(codC.equals("cgomez")&&pin==3333){
-            int opcion=Integer.parseInt(JOptionPane.showInputDialog(null, "MENÚ DE OPCIONES\n\n 1.Ver saldo\n 2.Retirar\n 3.Depositar\n 4.Salir"));
-            int cta=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cuenta entre 1-3: "));
+        	boolean salir = false;
+            int opcion1;
+            int opcion=0;
+            while(opcion!=4) {
+            	System.out.println("\n\nMENÚ DE OPCIONES\n\n 1.Ver saldo\n 2.Retirar\n 3.Depositar\n 4.Salir");
+                opcion= entrada.nextInt();
+            	
 
         switch (opcion){
             case 1:
-                
+            	int cta;
+                System.out.println("Ingrese la cuenta entre 1-3: ");
+                cta = entrada.nextInt();
                 if(cta==1){
                     carlos1.mostrarDatos();
                 }else if(cta==2){
@@ -112,11 +143,12 @@ public class App
                     carlos3.mostrarDatos();
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "No tiene esa cuenta.");
+                	System.out.println("No tiene esa cuenta.");
                 }
                 break;
             case 2:
-                
+                System.out.println("Ingrese la cuenta entre 1-3: ");
+                cta = entrada.nextInt();
                 if(cta==1){
                     carlos1.retirarBol();
                 }else if(cta==2){
@@ -126,7 +158,8 @@ public class App
                 }
                 break;
             case 3:
-                
+                System.out.println("Ingrese la cuenta entre 1-3: ");
+                cta = entrada.nextInt();
                 if(cta==1){
                     carlos1.depositarBol();
                 }else if(cta==2){
@@ -136,18 +169,19 @@ public class App
                 }
                 break;
             case 4:
-                JOptionPane.showMessageDialog(null, "Salir");
+            	System.out.println("Salió");
                 break;
             default:
-                JOptionPane.showMessageDialog(null, "Opcion Incorrecta");
+            	System.out.println("Opcion Incorrecta");
                 break;
+        }
         }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Ingresaste datos incorrectos");
+        	System.out.println("Ingresaste datos incorrectos");
         }
         }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Ingresaste datos que no corresponden en los campos");
+        	System.out.println("Ingresaste datos que no corresponden en los campos");
         }
     }
 }

@@ -5,14 +5,15 @@
  */
 package bo.edu.ucb.est;
 
-import javax.swing.JOptionPane;
+import java.util.Scanner;
+
 
 /**
  *
  * @author Bernardo
  */
 public class Cuenta extends Cliente{
-    
+	Scanner entrada = new Scanner(System.in);
     int nroCuenta;
     String moneda;
     String tipo;
@@ -84,29 +85,34 @@ public class Cuenta extends Cliente{
     }
 
     public void mostrarDatos(){
-        JOptionPane.showMessageDialog(null, "Nombre: "+nombre
-                                           +"\nCuenta Nro: "+nroCuenta
-                                           +"\nCódigo de cliente: "+codCli
-                                           +"\nCuenta: "+cuenta
-                                           +"\nMoneda: "+moneda
-                                           +"\nTipo: "+tipo
-                                           +"\nSaldo: "+saldo);
+    	System.out.println("Nombre: "+nombre
+                +"\nCuenta Nro: "+nroCuenta
+                +"\nCódigo de cliente: "+codCli
+                +"\nCuenta: "+cuenta
+                +"\nMoneda: "+moneda
+                +"\nTipo: "+tipo
+                +"\nSaldo: "+saldo);
     }   
     
     public void retirarBol(){
  
         try {
             int retiro = 0;
-            retiro = Integer.parseInt(JOptionPane.showInputDialog("Cuánto desea retirar?"));
+            System.out.println("Cuánto desea retirar?");
+            retiro = entrada.nextInt();
+            if(retiro>0){
             if(retiro<=saldo){
                 saldo=saldo-retiro;
-                JOptionPane.showMessageDialog(null, "Se retiró exitosamente: "+retiro+"bs.\nSaldo Actual: " +saldo);
+                System.out.println("Se retiró exitosamente: "+retiro+"bs.\nSaldo Actual: " +saldo);
             }else{
-            JOptionPane.showMessageDialog(null, "ERROR al realizar el retiro, no cuenta con esa monto");
+            	System.out.println("ERROR al realizar el retiro, no cuenta con esa monto");
+            }
+            }else{
+            	System.out.println("ERROR al realizar el retiro, quizó retirar monto negativo");
         }
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR, puede que NO introdujo números O quizó retirar monedas");
+        	System.out.println("ERROR, puede que NO introdujo números O quizó retirar monedas");
         }
         
         
@@ -116,16 +122,18 @@ public class Cuenta extends Cliente{
         
         try {
             double deposito = 0;
-            deposito = Double.parseDouble(JOptionPane.showInputDialog("Cuánto desea depositar?"));
+            System.out.println("Cuánto desea depositar?");
+      
+            deposito = entrada.nextDouble();
             if(deposito>=10){
                 saldo=saldo+deposito;
-                JOptionPane.showMessageDialog(null, "Se retiró exitosamente: "+deposito+"bs.\nSaldo Actual: " +saldo);
+                System.out.println("Se retiró exitosamente: "+deposito+"bs.\nSaldo Actual: " +saldo);
             }else{
-            JOptionPane.showMessageDialog(null, "ERROR al realizar el deposito, no puede depositar monedas ni montos negativos");
+            	System.out.println("ERROR al realizar el deposito, no puede depositar monedas ni montos negativos");
         }
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR, introduzca números y NO letras");
+        	System.out.println("ERROR, introduzca números y NO letras");
         }
         
     }
@@ -134,16 +142,21 @@ public class Cuenta extends Cliente{
  
         try {
             int retiro = 0;
-            retiro = Integer.parseInt(JOptionPane.showInputDialog("Cuánto desea retirar?"));
+            System.out.println("Cuánto desea retirar?");
+            retiro = entrada.nextInt();
+            if(retiro>0){
             if(retiro<=saldo){
                 saldo=saldo-retiro;
-                JOptionPane.showMessageDialog(null, "Se retiró exitosamente: "+retiro+"$.\nSaldo Actual: " +saldo+"$");
+                System.out.println("Se retiró exitosamente: "+retiro+"$.\nSaldo Actual: " +saldo+"$");
             }else{
-            JOptionPane.showMessageDialog(null, "ERROR al realizar el retiro, no cuenta con esa monto");
+            	System.out.println("ERROR al realizar el retiro, no cuenta con esa monto");
+            }
+            }else{
+            	System.out.println("ERROR al realizar el retiro, quizó retirar monto negativo");
         }
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR, puede que NO introdujo números O quizó retirar monedas");
+        	System.out.println("ERROR, puede que NO introdujo números O quizó retirar monedas");
         }
         
         
@@ -153,16 +166,17 @@ public class Cuenta extends Cliente{
         
         try {
             double deposito = 0;
-            deposito = Double.parseDouble(JOptionPane.showInputDialog("Cuánto desea depositar?"));
+            System.out.println("Cuánto desea depositar?");
+            deposito = entrada.nextDouble();
             if(deposito>=1){
                 saldo=saldo+deposito;
-                JOptionPane.showMessageDialog(null, "Se retiró exitosamente: "+deposito+"$.\nSaldo Actual: " +saldo+"$");
+                System.out.println("Se retiró exitosamente: "+deposito+"$.\nSaldo Actual: " +saldo+"$");
             }else{
-            JOptionPane.showMessageDialog(null, "ERROR al realizar el deposito, no puede depositar monedas ni montos negativos");
+            	System.out.println("ERROR al realizar el deposito, no puede depositar monedas ni montos negativos");
         }
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR, introduzca números y NO letras");
+        	System.out.println("ERROR, introduzca números y NO letras");
         }
         
     }
